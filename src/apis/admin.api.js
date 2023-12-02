@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { ROUTES } from "../constants/ROUTES.constants"
 import { toast } from 'react-toastify'
+import { authHeaderService } from '../services/auth_header.service'
 
 const BASE_URL = import.meta.env.VITE_APP_BACKEND_URL
 
@@ -8,7 +9,7 @@ const getAdminDetails = async () => {
     const uri = BASE_URL + ROUTES.ADMIN_DETAILS(localStorage.getItem('id'))
 
     const response = await axios
-        .get(uri)
+        .get(uri, { headers: authHeaderService })
         .then(res => res.data.data)
         .catch((err) => {
             toast(`${err.response.data.ui_err_msg}`, {
@@ -60,7 +61,6 @@ const updateAdminDetails = async (payload) => {
 
     return response
 }
-
 
 export {
     getAdminDetails,

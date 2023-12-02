@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom'
 const index = ({ element: Element }) => {
     const navigate = useNavigate()
 
-    const user = localStorage.getItem('id')
+    const userID = localStorage.getItem('id')
+    const userToken = localStorage.getItem('token')
 
     useEffect(() => {
-        if (!user) {
+        if (!userID && !userToken) {
             navigate('/login')
         }
     }, [])
