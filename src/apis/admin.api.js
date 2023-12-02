@@ -2,8 +2,10 @@ import axios from 'axios'
 import { ROUTES } from "../constants/ROUTES.constants"
 import { toast } from 'react-toastify'
 
+const BASE_URL = import.meta.env.VITE_APP_BACKEND_URL
+
 const getAdminDetails = async () => {
-    const uri = ROUTES.ADMIN_DETAILS(localStorage.getItem('id'))
+    const uri = BASE_URL + ROUTES.ADMIN_DETAILS(localStorage.getItem('id'))
 
     const response = await axios
         .get(uri)
@@ -26,7 +28,7 @@ const getAdminDetails = async () => {
 }
 
 const updateAdminDetails = async (payload) => {
-    const uri = ROUTES.ADMIN_DETAILS(localStorage.getItem('id'))
+    const uri = BASE_URL + ROUTES.ADMIN_DETAILS(localStorage.getItem('id'))
 
     const response = await axios
         .put(uri, payload)

@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "/account/*"
-  to = "https://stg.dhunjam.in/:splat"
-  status = 200
-  force = true

@@ -3,8 +3,10 @@ import { toast } from 'react-toastify'
 import { ROUTES } from '../constants/ROUTES.constants'
 import { saveLocalStorage } from '../utils/saveLocalStorage.utils'
 
+const BASE_URL = import.meta.env.VITE_APP_BACKEND_URL
+
 const login = async (payload) => {
-    const uri = ROUTES.LOGIN
+    const uri = BASE_URL + ROUTES.LOGIN
 
     const response = await axios
         .post(uri, payload)
