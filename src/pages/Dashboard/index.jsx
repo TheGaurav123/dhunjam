@@ -37,6 +37,12 @@ const index = () => {
     if (String(label).includes('category')) {
       setAdmin({ ...admin, amount: { ...admin.amount, [label]: Number(value) } })
     }
+    else if (String(label).toLowerCase() === 'charge_customers' && value === 'true') {
+      setAdmin({ ...admin, charge_customers: true })
+    }
+    else if (String(label).toLowerCase() === 'charge_customers' && value === 'false') {
+      setAdmin({ ...admin, charge_customers: false })
+    }
     else {
       setAdmin({ ...admin, [label]: value })
     }
@@ -101,7 +107,7 @@ const index = () => {
     }
 
     getAdmin()
-  }, [isButtonDisabled])
+  }, [])
 
   if (!isLoading) {
     return (
@@ -120,7 +126,7 @@ const index = () => {
                     type='radio'
                     name='charge_customers'
                     defaultChecked={admin?.charge_customers}
-                    onClick={() => setAdmin({ ...admin, charge_customers: true })}
+                    onClick={handleFormChange}
                     className='accent-radio'
                     value={true}
                   />
@@ -131,7 +137,7 @@ const index = () => {
                     type='radio'
                     name='charge_customers'
                     defaultChecked={!admin?.charge_customers}
-                    onClick={() => setAdmin({ ...admin, charge_customers: false })}
+                    onClick={handleFormChange}
                     className='accent-radio'
                     value={false}
                   />
