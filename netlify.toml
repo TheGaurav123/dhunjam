@@ -1,3 +1,4 @@
 [[redirects]]
   from = "/account"
   to = "https://stg.dhunjam.in"
+  status = 200
